@@ -135,7 +135,7 @@ def calculate_naturalness(model, protein_seq, cds_seq, prot_stoi, cds_stoi, devi
         probs = torch.exp(target_log_probs)
 
         # Compute metrics
-        naturalness = probs.mean().item()
+        naturalness = torch.exp(target_log_probs.mean()).item()
         avg_log_prob = target_log_probs.mean().item()
         perplexity = torch.exp(-target_log_probs.mean()).item()
 
